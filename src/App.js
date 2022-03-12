@@ -5,6 +5,8 @@ import store from "./state/store";
 import { useDispatch, useSelector } from "react-redux";
 
 function App() {
+  store.subscribe(() => console.log("Store is now: ", store.getState()));
+  const myState = useSelector((state) => state);
   const { depositMoney, withDrawMoney, getBankName, getAccountType } =
     bindActionCreators(actionCreators, useDispatch());
   return (
