@@ -1,25 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import ReduxDemo from "./ReduxDemo";
+import store from "./state/store";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  store.subscribe(() => console.log("Store is now: ", store.getState()));
+  store.dispatch({ type: "deposit", payload: 1000 });
+  store.dispatch({ type: "withdraw", payload: 500 });
+  store.dispatch({ type: "name" });
+  store.dispatch({ type: "accountType" });
+  return <div className="App">{/* <ReduxDemo /> */}</div>;
 }
 
 export default App;
